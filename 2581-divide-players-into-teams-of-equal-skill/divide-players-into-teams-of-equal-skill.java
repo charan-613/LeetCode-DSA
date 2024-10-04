@@ -5,11 +5,14 @@ class Solution {
         int totalSkill = skill[0] + skill[n - 1];
         long chemistry = 0;
 
-        for (int i = 0; i < n / 2; i++) {
-            if (skill[i] + skill[n - i - 1] != totalSkill) {
+        int i = 0, j = n - 1;
+        while (i < j) {
+            if (skill[i] + skill[j] != totalSkill) {
                 return -1;
             }
-            chemistry += skill[i] * skill[n - i - 1];
+            chemistry += skill[i] * skill[j];
+            i++;
+            j--;
         }
         return chemistry;
     }
