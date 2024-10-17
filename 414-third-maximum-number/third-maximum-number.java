@@ -5,7 +5,12 @@ class Solution {
         for (int num : nums) {
             uniqueNums.add(num);
         }
-        Integer[] uniqueArray = uniqueNums.toArray(new Integer[0]);
+        
+        int[] uniqueArray = new int[uniqueNums.size()];
+        int index = 0;
+        for (int num : uniqueNums) { 
+            uniqueArray[index++] = num;
+        }
         Arrays.sort(uniqueArray); 
 
         if (uniqueArray.length < 3) {
