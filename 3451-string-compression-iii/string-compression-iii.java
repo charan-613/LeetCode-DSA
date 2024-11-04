@@ -1,7 +1,7 @@
 class Solution {
     public String compressedString(String word) {
         char[] charWords = word.toCharArray();
-        String result = "";
+        StringBuilder result = new StringBuilder();
 
         int i = 0;
 
@@ -15,11 +15,11 @@ class Solution {
             }
 
             while(count > 9){
-                result += "9" + currentChar;
+                result.append(9).append(currentChar);
                 count -= 9;
             }
-            result += count + "" + currentChar;
+            result.append(count).append(currentChar);
         }
-        return result;
+        return result.toString();
     }
 }
