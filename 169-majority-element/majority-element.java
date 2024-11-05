@@ -9,9 +9,9 @@ class Solution {
                 }
             }
             if(count > nums.length / 2){
-                return nums[i];
+                majority = nums[i];
             }
         }
-        return -1;
+        return majority;
     }
 }
