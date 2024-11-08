@@ -10,7 +10,7 @@ class Solution {
         }
         for (int i = 0; i < n; i++) {
             answer[i] = totalXor ^ maxK;
-            totalXor ^= nums[n - 1 - i];
+            totalXor ^= nums[n - i - 1];
         }
         return answer;
     }
