@@ -1,30 +1,31 @@
-public class Solution {
+class Solution {
     public int minSubarray(int[] nums, int p) {
-        long totalSum = 0;
-        for (int num : nums) {
-            totalSum += num;
-        }
-        int remainder = (int)(totalSum % p);
-        if (remainder == 0) return 0;
-
-        HashMap<Integer, Integer> prefixSums = new HashMap<>();
-        prefixSums.put(0, -1);
         int n = nums.length;
+        int totalSum = 0;
+        for (int num : nums) {
+            totalSum = (totalSum + num) % p;
+        }
+        
+        if (totalSum == 0) {
+            return 0;
+        }
+        
+        Map<Integer, Integer> prefixSumMap = new HashMap<>();
+        prefixSumMap.put(0, -1);
         int prefixSum = 0;
-        int minLength = n;
-
+        int result = n;
+        
         for (int i = 0; i < n; i++) {
             prefixSum = (prefixSum + nums[i]) % p;
-            if (prefixSum < 0) {
-                prefixSum += p;  
+            int target = (prefixSum - totalSum + p) % p;
+            
+            if (prefixSumMap.containsKey(target)) {
+                result = Math.min(result, i - prefixSumMap.get(target));
             }
-            int target = (prefixSum - remainder + p) % p;
-            if (prefixSums.containsKey(target)) {
-                minLength = Math.min(minLength, i - prefixSums.get(target));
-            }
-
-            prefixSums.put(prefixSum, i);
+            
+            prefixSumMap.put(prefixSum, i);
         }
-        return minLength == n ? -1 : minLength;
+        
+        return result == n ? -1 : result;
     }
 }
