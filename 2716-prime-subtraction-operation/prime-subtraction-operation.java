@@ -1,8 +1,8 @@
 public class Solution {
     public boolean primeSubOperation(int[] nums) {
         int prev = 0;
-        for (int n : nums) {
-            int upperBound = n - prev; // non-inclusive
+        for (int num : nums) {
+            int upperBound = num - prev; // non-inclusive
             // Find the largest prime less than the upper bound
             int largestPrime = 0;
             for (int i = upperBound - 1; i >= 2; i--) {
@@ -12,10 +12,10 @@ public class Solution {
                 }
             }
             // If n - largestPrime <= prev, return false
-            if (n - largestPrime <= prev) {
+            if (num - largestPrime <= prev) {
                 return false;
             }
-            prev = n - largestPrime;
+            prev = num - largestPrime;
         }
         return true;
     }
