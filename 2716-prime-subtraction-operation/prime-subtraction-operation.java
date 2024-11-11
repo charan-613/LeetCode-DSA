@@ -2,8 +2,7 @@ public class Solution {
     public boolean primeSubOperation(int[] nums) {
         int prev = 0;
         for (int num : nums) {
-            int upperBound = num - prev; // non-inclusive
-            // Find the largest prime less than the upper bound
+            int upperBound = num - prev; 
             int largestPrime = 0;
             for (int i = upperBound - 1; i >= 2; i--) {
                 if (isPrime(i)) {
@@ -11,7 +10,6 @@ public class Solution {
                     break;
                 }
             }
-            // If n - largestPrime <= prev, return false
             if (num - largestPrime <= prev) {
                 return false;
             }
@@ -20,7 +18,6 @@ public class Solution {
         return true;
     }
 
-    // Helper function to check if a number is prime
     public boolean isPrime(int n) {
         if (n <= 1) {
             return false;
