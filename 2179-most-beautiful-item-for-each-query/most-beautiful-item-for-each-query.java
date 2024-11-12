@@ -6,6 +6,7 @@ public class Solution {
         int[] result = new int[queries.length];
         int[][] queryWithIndex = new int[queries.length][2];
         
+        // Fill queryWithIndex with each query and its index.
         for (int i = 0; i < queries.length; i++) {
             queryWithIndex[i][0] = queries[i];
             queryWithIndex[i][1] = i;
