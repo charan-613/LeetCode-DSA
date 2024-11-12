@@ -1,15 +1,12 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        Map<Integer, Integer> countMap = new HashMap<>();
-        for (int num : nums) {
-            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
-        }
-        for (Map.Entry<Integer, Integer> entry : countMap.entrySet()) {
-            if (entry.getValue() == 1) {
-                return entry.getKey();
-                // return entry.getValue();
+        int n = nums.length;
+        Arrays.sort(nums);
+        for (int i = 1; i < n; i += 3) {
+            if (nums[i] != nums[i - 1]) {
+                return nums[i - 1];
             }
         }
-        return -1;
+        return nums[n - 1];
     }
 }
