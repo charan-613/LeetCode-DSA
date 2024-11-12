@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class Solution {
     public int[] maximumBeauty(int[][] items, int[] queries) {
-        Arrays.sort(items, (a, b) -> Integer.compare(a[0], b[0]));
+        Arrays.sort(items, (a, b) -> a[0] - b[0]);
         int[] result = new int[queries.length];
         int[][] queryWithIndex = new int[queries.length][2];
         
@@ -10,7 +10,7 @@ public class Solution {
             queryWithIndex[i][0] = queries[i];
             queryWithIndex[i][1] = i;
         }
-        Arrays.sort(queryWithIndex, (a, b) -> Integer.compare(a[0], b[0]));
+        Arrays.sort(queryWithIndex, (a, b) -> a[0] - b[0]);
 
         int maxBeauty = 0;
         int j = 0;
