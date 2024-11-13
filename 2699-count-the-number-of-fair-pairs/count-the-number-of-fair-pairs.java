@@ -17,7 +17,7 @@ class Solution {
 
     public static int lowerBound(int[] nums, int left, int right, int target){
         while(left < right){
-            int mid = (left + right) / 2;
+            int mid = (left) + (right - left) / 2;
             if(nums[mid] < target){
                 left = mid + 1;
             }
@@ -30,7 +30,7 @@ class Solution {
 
     public static int upperBound(int[] nums, int left, int right, int target){
         while(left < right){
-            int mid = (left + right) / 2;
+            int mid = (left) + (right - left) / 2;
             if(nums[mid] <= target){
                 left = mid + 1;
             }
