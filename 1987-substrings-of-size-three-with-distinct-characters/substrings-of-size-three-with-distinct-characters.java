@@ -1,29 +1,28 @@
 class Solution {
     public int countGoodSubstrings(String s) {
+        HashMap<Character, Integer> hm = new HashMap<>();
         int n = s.length();
+        int sl = 3;
+        int l = 0;
         int count = 0;
-        int k = 3;
-        for(int i = 0; i < n - k + 1; i++){
-            boolean temp = fun(s.substring(i, i + k), k);
-            if(temp){
+        for(int r = 0; r < n; r++){
+            char ch = s.charAt(r);
+            hm.put(ch, hm.getOrDefault(ch, 0) + 1);
+        
+            if(r - l == sl){
+                char tch = s.charAt(l);
+                hm.put(tch, hm.get(tch) - 1);
+                if(hm.get(tch) == 0){
+                    hm.remove(tch);
+                }
+                l++;
+            }
+
+            if(hm.size() == sl){
                 count += 1;
+
             }
         }
         return count;
-    }
-
-    public static boolean fun(String s, int k){
-        HashSet<Character> set = new HashSet<>();
-        int n = s.length();
-        for(int i = 0; i < n; i++){
-            char ch = s.charAt(i);
-            set.add(ch);
-        }
-        if(set.size() == k){
-            return true;
-        }
-        else{
-            return false;
-        }
     }
 }
