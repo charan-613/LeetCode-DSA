@@ -16,7 +16,7 @@ class Solution {
                 count++;
                 int m = l;
 
-                while(m < r && nums[m] != 1){
+                while(m < r && nums[m] == 0){
                     count++;
                     m++;
                 }
