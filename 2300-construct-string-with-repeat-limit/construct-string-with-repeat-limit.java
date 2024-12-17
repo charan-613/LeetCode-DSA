@@ -22,14 +22,13 @@ class Solution {
             freq[currentChar] -= toAdd;
 
             if (freq[currentChar] > 0) {
-                // Find the next available character to break the sequence
                 nextChar = currentChar - 1;
                 while (nextChar >= 0 && freq[nextChar] == 0) {
                     nextChar--;
                 }
 
                 if (nextChar < 0) {
-                    break; // No smaller character left to break the sequence
+                    break; 
                 }
 
                 result.append((char) (nextChar + 'a'));
