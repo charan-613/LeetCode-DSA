@@ -1,40 +1,33 @@
 class Solution {
     public int minimizedMaximum(int n, int[] quantities) {
-        int low = 1;
-        int high = max(quantities);
-        int res = -1;
-        while (low <= high) {
-            int mid = low + (high - low) / 2;
-            if (canWork(quantities, mid, n)) {
-                res = mid;
-                high = mid - 1;
-            } else {
-                low = mid + 1;
+        int l = 1;
+        int r = (int) Math.pow(10, 5);
+        while(l <= r){
+            int mid = l + (r - l) / 2;
+            if(isPossible(quantities, n, mid)){
+                r = mid - 1;
+            }
+            else{
+                l = mid + 1;
             }
         }
-        return res;
+        return l;
     }
 
-    public static boolean canWork(int[] quantities, int item, int total_stores) {
-        int need_stores = 0;
+    public static boolean isPossible(int[] quantities, int n, int limit){
+        for(int i = 0; i < quantities.length; i++){
+            int val = quantities[i];
 
-        for (int quantity : quantities) {
-            need_stores += (quantity - 1) / item + 1;
-            if (need_stores > total_stores) {
+            int temp = val / limit;
+            if(val % limit != 0){
+                temp++;
+            }
+            n -= temp;
+
+            if(n < 0){
                 return false;
             }
         }
         return true;
-    }
-
-    public static int max(int[] arr) {
-        int max = arr[0];
-
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[i] > max) {
-                max = arr[i];
-            }
-        }
-        return max;
     }
 }
