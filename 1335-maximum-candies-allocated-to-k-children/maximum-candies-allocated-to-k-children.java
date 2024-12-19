@@ -1,7 +1,7 @@
 class Solution {
     public int maximumCandies(int[] candies, long k) {
         int l = 1;
-        int r = (int) Math.pow(10, 7);
+        int r = getMax(candies);
         while(l <= r){
             int mid = l + (r - l) / 2;
             if(isPossible(candies, k, mid)){
@@ -12,6 +12,16 @@ class Solution {
             }
         }
         return r;
+    }
+
+    public static int getMax(int[] arr){
+        int max = Integer.MIN_VALUE;
+        for(int arrs : arr){
+            if(arrs > max){
+                max = arrs;
+            }
+        }
+        return max;
     }
 
     public static boolean isPossible(int[] candies, long children, int k){
