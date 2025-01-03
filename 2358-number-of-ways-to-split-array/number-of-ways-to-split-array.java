@@ -15,7 +15,6 @@ class Solution {
                 validSplits++;
             }
         }
-
         return validSplits;
     }
 }
