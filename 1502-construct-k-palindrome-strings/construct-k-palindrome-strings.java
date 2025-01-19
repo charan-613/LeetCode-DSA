@@ -1,21 +1,26 @@
 class Solution {
     public boolean canConstruct(String s, int k) {
-        if(k > s.length()){
+        if (s.length() < k) {
             return false;
         }
-
-        HashMap<Character, Integer> hm = new HashMap<>();
-        for(char c : s.toCharArray()){
-            hm.put(c, hm.getOrDefault(c, 0) + 1);
+        if (s.length() == k) {
+            return true;
         }
 
-        int odd = 0;
+        int oddcount = 0;
+        int[] freq = new int[26];
 
-        for(int count : hm.values()){
-            if(count % 2 != 0){
-                odd++;
+        for (char c : s.toCharArray()) {
+            freq[c - 'a']++;
+        }
+        for (int i = 0; i < 26; i++) {
+            if (freq[i] % 2 == 1) {
+                oddcount++;
             }
         }
-        return odd <= k;
+        if (oddcount <= k) {
+            return true;
+        }
+        return false;
     }
 }
