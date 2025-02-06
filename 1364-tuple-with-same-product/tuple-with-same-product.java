@@ -7,10 +7,14 @@ class Solution {
                 m.put(nums[i] * nums[j], m.getOrDefault(nums[i] * nums[j], 0) + 1);
             }
         }
+
         int ans = 0;
+        
         for (int count : m.values()) {
-            int comb = (count * (count - 1)) / 2;
-            ans += 8 * comb;
+            if(count > 1){
+                int comb = (count * (count - 1)) / 2;
+                ans += 8 * comb;
+            }
         }
         return ans;
     }
