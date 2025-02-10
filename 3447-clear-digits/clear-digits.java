@@ -1,24 +1,18 @@
 class Solution {
     public String clearDigits(String s) {
-        Stack<Character> stack = new Stack<>();
-
-        for (int i = 0; i < s.length(); i++) {
-            char currentChar = s.charAt(i);
-            if (Character.isDigit(currentChar)) {
-                if (!stack.isEmpty()) {
-                    stack.pop(); 
+        StringBuilder result = new StringBuilder();
+        
+        for (char c : s.toCharArray()) {
+            if (Character.isDigit(c)) {
+                if (result.length() > 0 && !Character.isDigit(result.charAt(result.length() - 1))) {
+                    result.deleteCharAt(result.length() - 1);  
                 }
             }
             else {
-                stack.push(currentChar);
+                result.append(c); 
             }
         }
-
-        StringBuilder result = new StringBuilder();
-        while (!stack.isEmpty()) {
-            result.append(stack.pop());
-        }
-
-        return result.reverse().toString();
+        
+        return result.toString();
     }
 }
