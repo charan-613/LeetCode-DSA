@@ -20,9 +20,9 @@ class Solution {
             return false;
         }
 
-        for (int index = 0; index < stringNum.length(); index++) {
-            String left = stringNum.substring(0, index + 1);
-            String right = stringNum.substring(index + 1);
+        for (int i = 0; i < stringNum.length(); i++) {
+            String left = stringNum.substring(0, i + 1);
+            String right = stringNum.substring(i + 1);
             int leftNum = Integer.parseInt(left);
 
             if (canPartition(right, target - leftNum)) {
