@@ -1,14 +1,11 @@
 class Solution {
     public boolean checkPowersOfThree(int n) {
-        for(int i = 15; i >= 0; i--){
-            double x = Math.pow(3, i);
-            if(x <= n){
-                n -= x;
+        while(n > 0){
+            if(n % 3 == 2){
+                return false;
             }
-            if(n == 0){
-                return true;
-            }
+            n /= 3;
         }
-        return false;
+        return true;
     }
 }
